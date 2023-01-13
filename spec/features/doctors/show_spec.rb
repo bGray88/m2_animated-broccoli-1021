@@ -13,7 +13,9 @@ RSpec.describe 'the doctor show' do
     it 'shows all attributes for doctor; name, specialty, university' do
       visit doctor_path(@doctor_1)
 
-      expect(page).to have_content()
+      expect(page).to have_content(@doctor_1.name)
+      expect(page).to have_content(@doctor_1.specialty)
+      expect(page).to have_content(@doctor_1.university)
     end
   end
 end
