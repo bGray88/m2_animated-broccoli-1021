@@ -32,7 +32,7 @@ RSpec.describe 'the doctor show' do
     it 'shows the name of associated hospital and names of all patients' do
       visit doctor_path(@doctor_1)
 
-      expect(page).to have_content(@doctor.hospital)
+      expect(page).to have_content(@doctor_1.hospital.name)
       expect(page).to have_content(@patient_1.name)
       expect(page).to have_content(@patient_2.name)
       expect(page).to have_content(@patient_3.name)

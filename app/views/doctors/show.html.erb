@@ -2,3 +2,11 @@
 
 <p><%= @doctor.specialty%></p>
 <p><%= @doctor.university%></p>
+
+<p><%= @doctor.hospital.name%></p>
+
+<% @doctor.patients.each do |patient| %>
+  <ul>
+    <li><%= patient.name %></li>
+  </ul>
+<% end %>
