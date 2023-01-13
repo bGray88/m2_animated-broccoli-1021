@@ -34,5 +34,19 @@ RSpec.describe 'the hospital show' do
       expect(page).to have_content(@doctor_3.name)
       expect(page).to_not have_content(@doctor_4.name)
     end
+
+    it 'I see the hospital\'s doctors patient count' do
+      visit hospital_path(@hospital_1)
+
+      expect(page).to have_content(@hospital_1.name)
+      within("#hosp-doctor-#{@doctor_1.id}") do
+        expect(page).to have_content(@doctor_1.name)
+        expect(page).to have_content(@doctor_1.patient_count)
+      end
+      within("#hosp-doctor-#{@doctor_2.id}") do
+        expect(page).to have_content(@doctor_2.name)
+        expect(page).to have_content(@doctor_2.patient_count)
+      end
+    end
   end
 end
