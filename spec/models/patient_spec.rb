@@ -22,7 +22,9 @@ RSpec.describe Patient do
     end
 
     describe '#alpha_sort_name' do
-      expect(Patient.alpha_sort_name).to eq([@patient_1, @patient_4, @patient_3, @patient_6])
+      it 'returns a set of patients based on (age > 18 and name sorted asc)' do
+        expect(Patient.alpha_sort_name).to eq([@patient_1, @patient_4, @patient_3, @patient_6])
+      end
     end
   end
 end
