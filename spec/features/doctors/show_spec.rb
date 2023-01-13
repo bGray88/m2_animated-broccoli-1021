@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe 'the doctor show' do
   before(:each) do
-    @doctor_1 = create(:doctor)
-
     @hospital_1 = create(:hospital)
+
+    @doctor_1 = create(:doctor, hospital: @hospital_1)
 
     @patient_1 = create(:patient)
   end

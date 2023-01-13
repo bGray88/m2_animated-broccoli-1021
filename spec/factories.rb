@@ -1,13 +1,12 @@
 FactoryBot.define do
   factory :doctor do
     name {Faker::Name.name}
-    specialty {Job.key_skill}
+    specialty {Faker::Job.key_skill}
     university {Faker::University.name}
   end
 
   factory :hospital do
-    name {Faker::Bible.location}
-    bachelorette
+    name {Faker::Religion::Bible.location}
   end
 
   factory :patient do
