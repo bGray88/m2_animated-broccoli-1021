@@ -18,6 +18,8 @@ RSpec.describe 'the doctor show' do
     @doctor_1.patients << @patient_3
     @doctor_1.patients << @patient_4
     @doctor_2.patients << @patient_5
+    @doctor_2.patients << @patient_1
+
   end
 
   describe 'As a visitor to a doctor\'s show page' do
@@ -38,6 +40,26 @@ RSpec.describe 'the doctor show' do
       expect(page).to have_content(@patient_3.name)
       expect(page).to have_content(@patient_4.name)
       expect(page).to_not have_content(@patient_5.name)
+    end
+
+    describe 'Next to each patient\'s name, has a button to remove that patient from that doctor' do
+      describe 'When I click that button for one patient I\'m brought back to the doctor show page' do
+        describe 'And I no longer see that patient\'s name listed, when I visit a different doctor\'s show page that is caring for the same patient' do
+          it 'shows that the patient is still on the other doctor\'s caseload' do
+            visit doctor_path(@doctor_1)
+
+            expect(page).to have_content(@patient_1.name)
+
+            click_on("Delete Patient")
+
+            expect(page).to_not have_content(@patient_1.name)
+
+            visit doctor_path(@doctor_2)
+
+            expect(page).to have_content(@patient_1)
+          end
+        end
+      end
     end
   end
 end
