@@ -19,7 +19,6 @@ RSpec.describe 'the doctor show' do
     @doctor_1.patients << @patient_4
     @doctor_2.patients << @patient_5
     @doctor_2.patients << @patient_1
-
   end
 
   describe 'As a visitor to a doctor\'s show page' do
