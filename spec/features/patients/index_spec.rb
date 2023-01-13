@@ -15,14 +15,20 @@ RSpec.describe 'the patients index' do
       it 'lists the names in ascending alphabetical order (A - Z, you do not need to account for capitalization)' do
         visit patients_path
 
-        expect(page).to have_content(@patient_1)
-        expect(page).to have_content(@patient_3)
-        expect(page).to have_content(@patient_4)
-        expect(page).to have_content(@patient_6)
+        expect(page).to have_content(@patient_1.name)
+        expect(page).to have_content(@patient_3.name)
+        expect(page).to have_content(@patient_4.name)
+        expect(page).to have_content(@patient_6.name)
 
-        expect(@patient_1.name).to appear_before(@patient_4)
-        expect(@patient_4.name).to appear_before(@patient_3)
-        expect(@patient_3.name).to appear_before(@patient_6)
+        expect(@patient_1.name).to appear_before(@patient_4.name)
+        expect(@patient_4.name).to appear_before(@patient_3.name)
+        expect(@patient_3.name).to appear_before(@patient_6.name)
+
+        @patient_7 = create(:patient, age: 37, name: "Chet")
+
+        visit patients_path
+
+        expect(@patient_7.name).to appear_before(@patient_4.name)
       end
     end
   end
