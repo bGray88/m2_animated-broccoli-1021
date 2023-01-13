@@ -47,16 +47,20 @@ RSpec.describe 'the doctor show' do
         describe 'And I no longer see that patient\'s name listed, when I visit a different doctor\'s show page that is caring for the same patient' do
           it 'shows that the patient is still on the other doctor\'s caseload' do
             visit doctor_path(@doctor_1)
+            
+            within("#doctor-patient-#{@patient_1.id}") do
+              expect(page).to have_content(@patient_1.name)
 
-            expect(page).to have_content(@patient_1.name)
-
-            click_on("Delete Patient")
+              click_on("Delete Patient")
+            end
 
             expect(page).to_not have_content(@patient_1.name)
 
             visit doctor_path(@doctor_2)
 
-            expect(page).to have_content(@patient_1)
+            within("#doctor-patient-#{@patient_1.id}") do
+              expect(page).to have_content(@patient_1.name)
+            end
           end
         end
       end
