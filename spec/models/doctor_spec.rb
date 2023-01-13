@@ -38,7 +38,10 @@ RSpec.describe Doctor do
     end
 
     describe '#patient_count' do
-      expect(@doctor_1.patient_count).to eq(4)
+      it 'returns count of total patients for doctor' do
+        expect(@doctor_1.patient_count).to eq(4)
+        expect(@doctor_2.patient_count).to eq(2)
+      end
     end
   end
 end
