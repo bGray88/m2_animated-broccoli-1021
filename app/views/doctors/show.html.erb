@@ -11,7 +11,7 @@
     <div id=<%= "doctor-patient-#{patient.id}" %> >
       <li>
         <%= patient.name %>
-        <%= button_to "Delete Patient", doctor_patient_path(patient), method: :delete %>
+        <%= button_to "Delete Patient", doctor_patient_path(patient), params: {doctor_id: @doctor.id}, method: :delete %>
       </li>
     </div>
   </ul>
